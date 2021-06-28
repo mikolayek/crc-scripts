@@ -7,9 +7,11 @@ import groovy.json.JsonSlurper
 def baseUrl = 'raw.githubusercontent.com/sap-onestrike/crc-scripts/develop/scripts'
 
 def includeScripts = []
-def scriptsList = StringUtils.split(IOUtils.toString(new URL("https://${baseUrl}/list.txt"), 'utf-8'), '\n')
+def scriptsList = StringUtils.split(IOUtils.toString(new URL("https://${baseUrl}/list.txt?${System.currentTimeMillis()}"), 'utf-8'), '\n')
 def js = new JsonSlurper()
 def results = []
+
+println "scripts: ${scriptsList.join(', ')}"
 
 scriptsList*.trim().each { s ->
   if (s && (includeScripts.isEmpty() || s in includeScripts)) {
