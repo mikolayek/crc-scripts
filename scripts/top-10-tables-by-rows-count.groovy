@@ -1,5 +1,4 @@
 import de.hybris.platform.core.*
-import org.apache.commons.lang.*
 import groovy.json.JsonOutput
   
 def con = Registry.currentTenant.dataSource.connection
@@ -27,7 +26,7 @@ try {
       def o = r.getObject(i + 1)
       	
       if (o != null) {
-        row << StringEscapeUtils.escapeHtml(String.valueOf(o))
+        row << o
       }
     }
                          

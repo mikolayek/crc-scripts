@@ -51,11 +51,11 @@ try {
       def o = r.getObject(i + 1)
       	
       if (o != null) {
-        row << StringEscapeUtils.escapeHtml(String.valueOf(o))
+        row << o
       }
     }
                          
-	result['data'] << row
+    result['data'] << row
   }
   
   r.close()
