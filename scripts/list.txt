@@ -1,6 +1,7 @@
 cronjobs-overlapping.groovy
 cronjobs-to-cleanup.groovy
 search-restrictions.groovy
+sample-data-check.groovy
 top-10-tables-by-rows-count.groovy
 top-10-tables-by-size.groovy
 password-encoding-usage.groovy
