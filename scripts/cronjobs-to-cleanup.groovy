@@ -16,7 +16,7 @@ def query = new FlexibleSearchQuery(
 	'	JOIN Trigger AS t ON {t.cronjob} = {c.PK} ' + 
 	'	JOIN EnumerationValue AS e ON {e.PK} = {c.status} } ' + 
 	'WHERE ' + 
-	'{c.active} = true AND ' + 
+	'{c.active} = 1 AND ' + 
 	'{t.cronExpression} IS NULL AND ' + 
 	'{e.code} = \'FINISHED\' AND ' + 
 	'{c.endTime} < ?cleanupDate')

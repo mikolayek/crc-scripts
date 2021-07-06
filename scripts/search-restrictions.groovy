@@ -5,7 +5,7 @@ def query = new FlexibleSearchQuery('SELECT {sr.code}, {sr.name}, {sr.active}, {
 'FROM {SearchRestriction AS sr ' + 
 '	JOIN Principal AS p ON {sr.principal} = {p.PK} ' + 
 '   JOIN ComposedType AS ct on {sr.restrictedType} = {ct.PK}} ' +
-'WHERE {sr.active} = true')
+'WHERE {sr.active} = 1')
 
 query.setResultClassList([String.class, String.class, Boolean.class, String.class, String.class, String.class])
 
