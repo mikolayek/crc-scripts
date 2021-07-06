@@ -6,7 +6,7 @@ import groovy.json.JsonSlurper
 
 def baseUrl = 'raw.githubusercontent.com/sap-onestrike/crc-scripts/develop/scripts'
 
-def includeScripts = []
+def includeScripts = ['cronjobs-overlapping.groovy', 'cronjobs-to-cleanup.groovy', 'search-restrictions.groovy' ]
 def scriptsList = StringUtils.split(IOUtils.toString(new URL("https://${baseUrl}/list.txt?${System.currentTimeMillis()}"), 'utf-8'), '\n')
 def js = new JsonSlurper()
 def results = []
