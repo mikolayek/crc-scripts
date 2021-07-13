@@ -4,7 +4,7 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
 
-def baseUrl = 'raw.githubusercontent.com/sap-onestrike/crc-scripts/develop/scripts'
+def baseUrl = 'raw.githubusercontent.com/sap-onestrike/crc-scripts/main/scripts'
 
 def includeScripts = []
 def scriptsList = StringUtils.split(IOUtils.toString(new URL("https://${baseUrl}/list.txt?${System.currentTimeMillis()}"), 'utf-8'), '\n')
