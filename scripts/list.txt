@@ -1,3 +1,4 @@
+audited-types.groovy
 cronjobs-overlapping.groovy
 cronjobs-to-cleanup.groovy
 search-restrictions.groovy
