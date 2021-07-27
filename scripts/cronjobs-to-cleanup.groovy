@@ -13,7 +13,7 @@ import groovy.transform.Field
 def query = new FlexibleSearchQuery(
 	'SELECT {c.code}, {c.active}, {c.startTime}, {c.endTime}, {e.code}, {t.cronExpression} ' + 
 	'FROM {CronJob AS c ' + 
-	'	JOIN Trigger AS t ON {t.cronjob} = {c.PK} ' + 
+	'	LEFT OUTER JOIN Trigger AS t ON {t.cronjob} = {c.PK} ' + 
 	'	JOIN EnumerationValue AS e ON {e.PK} = {c.status} } ' + 
 	'WHERE ' + 
 	'{c.active} = 1 AND ' + 
@@ -32,7 +32,7 @@ def result = flexibleSearchService.search(query)
 results = []
 
 result.result.each { r -> 
-  results << [ cronjob: r[0], active: r[1], startTime: r[2], endTime: r[3], status: r[4], cronExpression: r[5] ]
+  results << [ cronjob: r[0], active: r[1], startTime: r[2], endTime: r[3], status: r[4], cronExpression: "" ]
 }
 
 
