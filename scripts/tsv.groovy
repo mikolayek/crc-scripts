@@ -1,20 +1,11 @@
-import java.util.ArrayList
+
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery
 import de.hybris.bootstrap.config.ConfigUtil
 import de.hybris.platform.core.Registry
-import java.io.File
-import java.util.Date
-import groovy.lang.Closure
 import groovy.util.XmlParser
-import groovy.util.XmlSlurper
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.collections.CollectionUtils
-import java.util.stream.Collectors
 import de.hybris.platform.core.enums.TypeOfCollectionEnum
-import de.hybris.bootstrap.config.ExtensionInfo
-import de.hybris.platform.core.MasterTenant
-import de.hybris.platform.core.Tenant
-import de.hybris.platform.util.Utilities
 import de.hybris.platform.util.typesystem.TypeSystemUtils
 import groovy.json.JsonOutput
 
@@ -22,8 +13,6 @@ import groovy.json.JsonOutput
 // https://help.sap.com/viewer/129a68efcdaf43dc94243b57f9aba5ad/2105/en-US/8ecae959b9bd46b8b426fa8dbde5cac4.html
 
 def customExtensions = []
-////////////////////////////////////////////////////////////////////
-//// Report Main Execution
 def composedTypeExcluded = []
 composedTypeExcluded.add('RelationMetaType')
 composedTypeExcluded.add('EnumerationMetaType')
@@ -40,9 +29,6 @@ GENERIC_RELATION_TABLE = 'links'
 RELATION_CARDINALITY_MANY = 'many'
 
 ATTRIBUTE_DESCRIPTOR_TYPE = 'AttributeDescriptor'
-RELATION_DESCRIPTOR_TYPE = 'RelationDescriptor'
-
-SEPARATOR = '|'
 
 //// GENERIC SERVICES
 //search service
@@ -173,7 +159,7 @@ def getTypeSystem() {
     return TypeSystemUtils.loadViaClassLoader(getAllLoadedExtensions())
 }
 
-//report file
+//report
 def writeReportLine(extensionName, rule, priority, element, description) {
     ruleViolations << [
         extension: extensionName,
@@ -404,7 +390,6 @@ def checkComposedTypeDebug = { composedType ->
 STANDARD_EXTENSION_LIST = getStandardExtensions()
 customExtensions = getCustomExtensions()
 
-println "{ customExtensions: ${customExtensions} }"
 //// QUERY DEFINITIONS
 //TYPES
 def queryComposedTypes = "SELECT {item:PK} from {ComposedType as item} WHERE {item:extensionName} IN ('" + customExtensions.join("','") + "') ORDER BY {item:code}"
@@ -419,7 +404,7 @@ try {
     executeSearch(queryRelationTypes).result.each { checkRelationType(it) }
     executeSearch(queryComposedTypes).result.each { printTypeDetail(it) }
 
-    result = [violations: ruleViolations, customTypes: customTypes]
+    result = [violations: ruleViolations, customTypes: customTypes, extensions: customExtensions]
     
     return JsonOutput.prettyPrint(JsonOutput.toJson(result))
 }catch (Exception ex) {
