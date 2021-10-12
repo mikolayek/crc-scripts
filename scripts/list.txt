@@ -8,3 +8,4 @@ top-10-tables-by-size.groovy
 password-encoding-usage.groovy
 solr-indexer-mode.groovy
 tsv.groovy
+config.groovy
