@@ -27,6 +27,8 @@ query.addQueryParameter("cleanupDate", cleanupDate)
 
 query.setResultClassList([String.class, Boolean.class, Date.class, Date.class, String.class, String.class])
 
+query.setCount(100)
+
 def result = flexibleSearchService.search(query)
 
 results = []
