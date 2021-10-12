@@ -9,3 +9,4 @@ password-encoding-usage.groovy
 solr-indexer-mode.groovy
 tsv.groovy
 config.groovy
+customtypes.groovy
