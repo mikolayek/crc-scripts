@@ -10,3 +10,4 @@ solr-indexer-mode.groovy
 tsv.groovy
 config.groovy
 customtypes.groovy
+security.groovy
