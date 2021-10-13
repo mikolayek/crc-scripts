@@ -1,4 +1,3 @@
-
 import groovy.json.JsonOutput
 import org.apache.commons.configuration.Configuration
 
@@ -8,8 +7,8 @@ def auditingEnabled = config.getProperty('auditing.enabled')
 
 auditedItems = []
 if (auditingEnabled) {
-	def auditKeys = config.getKeys('audit')
-	auditKeys.each { key ->
+    def auditKeys = config.getKeys('audit')
+    auditKeys.each { key ->
 
       if (key.startsWith('audit.') && key.endsWith('.enabled')) {
         def itemName = (key =~ 'audit\\.(.*)\\.enabled')[0][1]      
