@@ -5,7 +5,7 @@ import groovy.json.JsonSlurper
 // dependencies are available in SAP Commerce environment
 // please run script in hac groovy console
 
-def baseUrl = 'raw.githubusercontent.com/sap-onestrike/crc-scripts/main/scripts'
+def baseUrl = 'raw.githubusercontent.com/mikolayek/crc-scripts/main/scripts'
 
 def includeScripts = []
 def scriptsList = "https://${baseUrl}/list.txt?${System.currentTimeMillis()}".toURL().text.split("\r\n*")
