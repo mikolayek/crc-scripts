@@ -11,16 +11,16 @@ import groovy.json.JsonOutput
 //check the type system definition in custom extensions according to:
 // https://help.sap.com/viewer/129a68efcdaf43dc94243b57f9aba5ad/2105/en-US/8ecae959b9bd46b8b426fa8dbde5cac4.html
 
-def customExtensions = []
-def composedTypeExcluded = []
+@Field def customExtensions = []
+@Field def composedTypeExcluded = []
 composedTypeExcluded.add('RelationMetaType')
 composedTypeExcluded.add('EnumerationMetaType')
 
-def typeService = spring.getBean('typeService')
-def flexibleSearchService = spring.getBean('flexibleSearchService')
-def configurationService = spring.getBean('configurationService')
-def ruleViolations = []
-def customTypes = []
+@Field def typeService = spring.getBean('typeService')
+@Field def flexibleSearchService = spring.getBean('flexibleSearchService')
+@Field def configurationService = spring.getBean('configurationService')
+@Field def ruleViolations = []
+@Field def customTypes = []
 
 GENERIC_ITEM_TYPE = 'GenericItem'
 GENERIC_ITEM_TABLE = 'genericitems'
