@@ -1,4 +1,3 @@
-
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery
 import de.hybris.bootstrap.config.ConfigUtil
 import de.hybris.platform.core.Registry
