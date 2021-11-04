@@ -26,9 +26,15 @@ def checks = [
 	 	//regexFilter:""
 	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
 	],
-		[
+	[
 		name :"BaseStore Check",
 	 	query:"SELECT {uid} FROM {BaseStore}",
+	 	//regexFilter:""
+	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
+	],
+	[
+		name :"Point of Service Check",
+	 	query:"SELECT {name} FROM {PointOfService}",
 	 	//regexFilter:""
 	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
 	]
