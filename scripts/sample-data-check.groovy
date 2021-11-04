@@ -5,38 +5,34 @@ def checks = [
 	[
 		name :"Product Catalog Check",
 	 	query:"SELECT {id} FROM {Catalog}",
-	 	//regexFilter:""
-	 	regexFilter:"(apparel|powertools|electronics)ProductCatalog"
+	 	regexFilter:"(?i)(apparel|powertools|electronics)ProductCatalog"
 	],
 	[
 		name :"Content Catalog Check",
 	 	query:"SELECT {id} FROM {Catalog}",
-	 	//regexFilter:""
-	 	regexFilter:"(apparel|powertools|electronics)(-.*)?ContentCatalog"
+	 	regexFilter:"(?i)(apparel|powertools|electronics)(-.*)?ContentCatalog"
 	],
 	[
 		name :"Classification Catalog Check",
 	 	query:"SELECT {id} FROM {Catalog}",
-	 	//regexFilter:""
-	 	regexFilter:"((P|p)owertools|(E|e)lectronics)Classification"
+	 	regexFilter:"(?i)(powertools|electronics)Classification"
 	],
 	[
 		name :"Website Check",
 	 	query:"SELECT {uid} FROM {BaseSite}",
-	 	//regexFilter:""
-	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
+	 	//regexFilter:"(?i)"
+	 	regexFilter:"(?i)(apparel(-.*)?)|powertools|electronics"
 	],
 	[
 		name :"BaseStore Check",
 	 	query:"SELECT {uid} FROM {BaseStore}",
-	 	//regexFilter:""
-	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
+	 	//regexFilter:"(?i)"
+	 	regexFilter:"(?i)(apparel(-.*)?)|powertools|electronics"
 	],
 	[
 		name :"Point of Service Check",
 	 	query:"SELECT {name} FROM {PointOfService}",
-	 	//regexFilter:""
-	 	regexFilter:"(apparel(-.*)?)|powertools|electronics"
+	 	regexFilter:"(?i)apparel|powertools|electronics"
 	]
 ]
 
@@ -57,7 +53,7 @@ def performCheck(check) {
 
 		def sampleDataFound = true;
 		if (check.regexFilter!=null && !check.regexFilter.isEmpty()) {
-			sampleDataFound = (row ==~ check.regexFilter)
+			sampleDataFound = (row =~ check.regexFilter)
 		}
 
 		if (sampleDataFound) {
